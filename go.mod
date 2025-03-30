@@ -1,4 +1,4 @@
-module github.com/IlianBuh/filemanager-protos
+module github.com/IlianBuh/fmProto
 
 go 1.24
 
