@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package fileManager;
+
+option go_package = "ilianBuh.fileManager.v1;fileManagerV1";
+
+service FileManager {
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc PutFile (stream PutFileRequest) returns (PutFileResponse);
+  rpc GetFile (GetFileRequest) returns (stream GetFileResponse);
+  rpc PostFile (stream PostFileRequest) returns (PostFileResponse);
+  rpc DeleteFile (DeleteFileRequest) returns (DeleteFileResponse);
+  rpc MoveFile (MoveFileRequest) returns (MoveFileResponse);
+  rpc CopyFile (CopyFileRequest) returns (CopyFileResponse);
+}
+
+message LoginRequest {
+}
+message LoginResponse {
+  string treeImage = 1;
+}
+
+message PutFileRequest {
+  string fileName = 1;
+  bytes chunk = 2;
+}
+message PutFileResponse {
+  ResponseStatus status = 1;
+}
+
+message PostFileRequest {
+  string fileName = 1;
+  bytes chunk = 2;
+}
+message PostFileResponse {
+  ResponseStatus status = 1;
+}
+
+message GetFileRequest {
+  string fileName = 1;
+}
+message GetFileResponse {
+  bytes chunk = 1;
+}
+
+message DeleteFileRequest {
+  string fileName = 1;
+}
+message DeleteFileResponse {
+  ResponseStatus status = 1;
+}
+
+message MoveFileRequest{
+  string srcFileName = 1;
+  string destFileName = 2;
+}
+message MoveFileResponse {
+  ResponseStatus status = 1;
+}
+
+message CopyFileRequest {
+  string srcFileName = 1;
+  string destFileName = 2;
+}
+message CopyFileResponse {
+  ResponseStatus status = 1;
+}
+enum ResponseStatus{
+  Ok = 0;
+  FileNotFound = 1;
+  PermissionDenied = 2;
+  Internal = 3;
+}
