@@ -479,7 +479,6 @@ func (x *DeleteFileRequest) GetFileName() string {
 
 type DeleteFileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        ResponseStatus         `protobuf:"varint,1,opt,name=status,proto3,enum=fileManager.ResponseStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -512,13 +511,6 @@ func (x *DeleteFileResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DeleteFileResponse.ProtoReflect.Descriptor instead.
 func (*DeleteFileResponse) Descriptor() ([]byte, []int) {
 	return file_filemanager_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *DeleteFileResponse) GetStatus() ResponseStatus {
-	if x != nil {
-		return x.Status
-	}
-	return ResponseStatus_Ok
 }
 
 type MoveFileRequest struct {
@@ -575,7 +567,6 @@ func (x *MoveFileRequest) GetDestFileName() string {
 
 type MoveFileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        ResponseStatus         `protobuf:"varint,1,opt,name=status,proto3,enum=fileManager.ResponseStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -608,13 +599,6 @@ func (x *MoveFileResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MoveFileResponse.ProtoReflect.Descriptor instead.
 func (*MoveFileResponse) Descriptor() ([]byte, []int) {
 	return file_filemanager_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *MoveFileResponse) GetStatus() ResponseStatus {
-	if x != nil {
-		return x.Status
-	}
-	return ResponseStatus_Ok
 }
 
 type CopyFileRequest struct {
@@ -671,7 +655,6 @@ func (x *CopyFileRequest) GetDestFileName() string {
 
 type CopyFileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Status        ResponseStatus         `protobuf:"varint,1,opt,name=status,proto3,enum=fileManager.ResponseStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -706,13 +689,6 @@ func (*CopyFileResponse) Descriptor() ([]byte, []int) {
 	return file_filemanager_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *CopyFileResponse) GetStatus() ResponseStatus {
-	if x != nil {
-		return x.Status
-	}
-	return ResponseStatus_Ok
-}
-
 var File_filemanager_proto protoreflect.FileDescriptor
 
 const file_filemanager_proto_rawDesc = "" +
@@ -736,19 +712,16 @@ const file_filemanager_proto_rawDesc = "" +
 	"\x0fGetFileResponse\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunk\"/\n" +
 	"\x11DeleteFileRequest\x12\x1a\n" +
-	"\bfileName\x18\x01 \x01(\tR\bfileName\"I\n" +
-	"\x12DeleteFileResponse\x123\n" +
-	"\x06status\x18\x01 \x01(\x0e2\x1b.fileManager.ResponseStatusR\x06status\"W\n" +
+	"\bfileName\x18\x01 \x01(\tR\bfileName\"\x14\n" +
+	"\x12DeleteFileResponse\"W\n" +
 	"\x0fMoveFileRequest\x12 \n" +
 	"\vsrcFileName\x18\x01 \x01(\tR\vsrcFileName\x12\"\n" +
-	"\fdestFileName\x18\x02 \x01(\tR\fdestFileName\"G\n" +
-	"\x10MoveFileResponse\x123\n" +
-	"\x06status\x18\x01 \x01(\x0e2\x1b.fileManager.ResponseStatusR\x06status\"W\n" +
+	"\fdestFileName\x18\x02 \x01(\tR\fdestFileName\"\x12\n" +
+	"\x10MoveFileResponse\"W\n" +
 	"\x0fCopyFileRequest\x12 \n" +
 	"\vsrcFileName\x18\x01 \x01(\tR\vsrcFileName\x12\"\n" +
-	"\fdestFileName\x18\x02 \x01(\tR\fdestFileName\"G\n" +
-	"\x10CopyFileResponse\x123\n" +
-	"\x06status\x18\x01 \x01(\x0e2\x1b.fileManager.ResponseStatusR\x06status*N\n" +
+	"\fdestFileName\x18\x02 \x01(\tR\fdestFileName\"\x12\n" +
+	"\x10CopyFileResponse*N\n" +
 	"\x0eResponseStatus\x12\x06\n" +
 	"\x02Ok\x10\x00\x12\x10\n" +
 	"\fFileNotFound\x10\x01\x12\x14\n" +
@@ -798,28 +771,25 @@ var file_filemanager_proto_goTypes = []any{
 var file_filemanager_proto_depIdxs = []int32{
 	0,  // 0: fileManager.PutFileResponse.status:type_name -> fileManager.ResponseStatus
 	0,  // 1: fileManager.PostFileResponse.status:type_name -> fileManager.ResponseStatus
-	0,  // 2: fileManager.DeleteFileResponse.status:type_name -> fileManager.ResponseStatus
-	0,  // 3: fileManager.MoveFileResponse.status:type_name -> fileManager.ResponseStatus
-	0,  // 4: fileManager.CopyFileResponse.status:type_name -> fileManager.ResponseStatus
-	1,  // 5: fileManager.FileManager.Login:input_type -> fileManager.LoginRequest
-	3,  // 6: fileManager.FileManager.PutFile:input_type -> fileManager.PutFileRequest
-	7,  // 7: fileManager.FileManager.GetFile:input_type -> fileManager.GetFileRequest
-	5,  // 8: fileManager.FileManager.PostFile:input_type -> fileManager.PostFileRequest
-	9,  // 9: fileManager.FileManager.DeleteFile:input_type -> fileManager.DeleteFileRequest
-	11, // 10: fileManager.FileManager.MoveFile:input_type -> fileManager.MoveFileRequest
-	13, // 11: fileManager.FileManager.CopyFile:input_type -> fileManager.CopyFileRequest
-	2,  // 12: fileManager.FileManager.Login:output_type -> fileManager.LoginResponse
-	4,  // 13: fileManager.FileManager.PutFile:output_type -> fileManager.PutFileResponse
-	8,  // 14: fileManager.FileManager.GetFile:output_type -> fileManager.GetFileResponse
-	6,  // 15: fileManager.FileManager.PostFile:output_type -> fileManager.PostFileResponse
-	10, // 16: fileManager.FileManager.DeleteFile:output_type -> fileManager.DeleteFileResponse
-	12, // 17: fileManager.FileManager.MoveFile:output_type -> fileManager.MoveFileResponse
-	14, // 18: fileManager.FileManager.CopyFile:output_type -> fileManager.CopyFileResponse
-	12, // [12:19] is the sub-list for method output_type
-	5,  // [5:12] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	1,  // 2: fileManager.FileManager.Login:input_type -> fileManager.LoginRequest
+	3,  // 3: fileManager.FileManager.PutFile:input_type -> fileManager.PutFileRequest
+	7,  // 4: fileManager.FileManager.GetFile:input_type -> fileManager.GetFileRequest
+	5,  // 5: fileManager.FileManager.PostFile:input_type -> fileManager.PostFileRequest
+	9,  // 6: fileManager.FileManager.DeleteFile:input_type -> fileManager.DeleteFileRequest
+	11, // 7: fileManager.FileManager.MoveFile:input_type -> fileManager.MoveFileRequest
+	13, // 8: fileManager.FileManager.CopyFile:input_type -> fileManager.CopyFileRequest
+	2,  // 9: fileManager.FileManager.Login:output_type -> fileManager.LoginResponse
+	4,  // 10: fileManager.FileManager.PutFile:output_type -> fileManager.PutFileResponse
+	8,  // 11: fileManager.FileManager.GetFile:output_type -> fileManager.GetFileResponse
+	6,  // 12: fileManager.FileManager.PostFile:output_type -> fileManager.PostFileResponse
+	10, // 13: fileManager.FileManager.DeleteFile:output_type -> fileManager.DeleteFileResponse
+	12, // 14: fileManager.FileManager.MoveFile:output_type -> fileManager.MoveFileResponse
+	14, // 15: fileManager.FileManager.CopyFile:output_type -> fileManager.CopyFileResponse
+	9,  // [9:16] is the sub-list for method output_type
+	2,  // [2:9] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_filemanager_proto_init() }

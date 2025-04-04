@@ -47,7 +47,6 @@ message DeleteFileRequest {
   string fileName = 1;
 }
 message DeleteFileResponse {
-  ResponseStatus status = 1;
 }
 
 message MoveFileRequest{
@@ -55,7 +54,6 @@ message MoveFileRequest{
   string destFileName = 2;
 }
 message MoveFileResponse {
-  ResponseStatus status = 1;
 }
 
 message CopyFileRequest {
@@ -63,8 +61,8 @@ message CopyFileRequest {
   string destFileName = 2;
 }
 message CopyFileResponse {
-  ResponseStatus status = 1;
 }
+
 enum ResponseStatus{
   Ok = 0;
   FileNotFound = 1;
